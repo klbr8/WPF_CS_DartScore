@@ -1,0 +1,27 @@
+﻿<Window x:Class="WPFDartScoringApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDartScoringApp"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="WPF Dart Scoring" Height="598" Width="842" Loaded="OnLoaded" Closing="Window_Closing">
+    <StackPanel Height="545">
+        <Menu Background="White">
+            <MenuItem Header="File">
+                <MenuItem Header="_Setup Match..." Click="MenuItem_MatchSetup_Click" IsEnabled="False" />
+                <MenuItem Header="_Practice Game..." Click="MenuItem_Practice_Click"/>
+                <MenuItem Header="_Reports..." Click="MenuItem_Reports_Click" IsEnabled="False" />
+                <MenuItem Header="E_xit" Click="MenuItem_Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Help" ToolTip="F1" IsEnabled="False" />
+        </Menu>
+        <StackPanel Name="spMain" Orientation="Horizontal" Height="474">
+            <local:ScoreBoard x:Name="sb" AcceptClick="OnAcceptClick"></local:ScoreBoard>
+            <local:Dartboard x:Name="db" DartsChanged="OnDartsChanged"></local:Dartboard>
+        </StackPanel>
+        <StatusBar Height="25">
+            <StatusBarItem Background="White" Name="StatusText"></StatusBarItem>
+        </StatusBar>
+    </StackPanel>
+</Window>

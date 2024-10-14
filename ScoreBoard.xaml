@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="WPFDartScoringApp.ScoreBoard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFDartScoringApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/CricketMarks.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <DockPanel x:Name="dpScoreBoard" Background="#FF000000" IsHitTestVisible="True">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="30" Background="{x:Null}" x:Name="spHeaders" IsHitTestVisible="True">
+            <TextBox Text="Team One" TextWrapping="NoWrap" MinWidth="150" Background="{x:Null}" FontFamily="Tall Paul" FontSize="24" Foreground="#FFFFFFFF" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" BorderBrush="#FFFFFFFF" BorderThickness="0,0,1,2" x:Name="tbTeamName1" MaxLines="1" IsReadOnly="True" IsUndoEnabled="False" IsTabStop="False" Focusable="False" IsHitTestVisible="True" VerticalScrollBarVisibility="Disabled"/>
+            <TextBox Text="Cricket" TextWrapping="NoWrap" MinWidth="100" Background="{x:Null}" FontFamily="Tall Paul" FontSize="24" Foreground="#FFFFFFFF" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" BorderBrush="#FFFFFFFF" BorderThickness="1,0,1,2" x:Name="tbGameName" IsTabStop="False" IsHitTestVisible="True" Focusable="False" IsUndoEnabled="False" MaxLines="1" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled"/>
+            <TextBox Text="Team Two" TextWrapping="NoWrap" MinWidth="150" Background="{x:Null}" FontFamily="Tall Paul" FontSize="24" Foreground="#FFFFFFFF" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" BorderBrush="#FFFFFFFF" BorderThickness="1,0,0,2" x:Name="tbTeamName2" IsTabStop="False" IsHitTestVisible="True" Focusable="False" VerticalScrollBarVisibility="Disabled" IsReadOnly="True" IsUndoEnabled="False" MaxLines="1"/>
+        </StackPanel>
+        <StackPanel Height="30" Name="spInfo"  DockPanel.Dock="Bottom" Orientation="Horizontal">
+            <Label Name="Label1" Width="110" Foreground="White" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontFamily="Tall Paul" FontSize="12" BorderBrush="White" BorderThickness="0,2,0,0">Current Shooter:</Label>
+            <TextBox Name="txtCurrShooter" Foreground="White" Text="" FontSize="22" FontFamily="Tall Paul"  Width="290" VerticalContentAlignment="Center" Background="Transparent" BorderBrush="White" BorderThickness="1,2,0,0" Padding="8,0,0,0" Focusable="False" IsTabStop="False" IsUndoEnabled="False" IsReadOnly="True" />
+        </StackPanel>
+        <ListBox IsSynchronizedWithCurrentItem="True" MinWidth="55" Background="{x:Null}" FontFamily="Tall Paul" FontSize="24" Foreground="#FFFFFFFF" BorderBrush="#FFFFFFFF" BorderThickness="0,0,1,0" x:Name="lbRoundScores1" IsTextSearchEnabled="False" IsHitTestVisible="True" Focusable="False" HorizontalContentAlignment="Right" />
+        <ListBox IsSynchronizedWithCurrentItem="True" MinWidth="70" Background="{x:Null}" FontFamily="Tall Paul" FontSize="24" Foreground="#FFFFFFFF" BorderBrush="#FFFFFFFF" BorderThickness="1,0,2,0" x:Name="lbTotalScore1" IsTextSearchEnabled="False" IsHitTestVisible="True" Focusable="False" HorizontalContentAlignment="Right" />
+        <ListBox IsSynchronizedWithCurrentItem="True" DockPanel.Dock="Right" MinWidth="55" Background="{x:Null}" FontFamily="Tall Paul" FontSize="24" Foreground="#FFFFFFFF" BorderThickness="1,0,0,0" BorderBrush="#FFFFFFFF" x:Name="lbRoundScores2" IsHitTestVisible="True" Focusable="False" IsTextSearchEnabled="False" HorizontalContentAlignment="Right" />
+        <ListBox IsSynchronizedWithCurrentItem="True" DockPanel.Dock="Right" MinWidth="70" Background="{x:Null}" FontFamily="Tall Paul" FontSize="24" Foreground="#FFFFFFFF" BorderThickness="2,0,1,0" BorderBrush="#FFFFFFFF" x:Name="lbTotalScore2" IsHitTestVisible="True" Focusable="False" IsTextSearchEnabled="False" HorizontalContentAlignment="Right" />
+        <Canvas MinWidth="150" Background="{x:Null}" x:Name="cvMarks" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+            <StackPanel MinWidth="150" Orientation="Horizontal" Background="{x:Null}" x:Name="spFinalMarks" IsHitTestVisible="True" Height="360">
+                <StackPanel MinWidth="50" Width="50" Height="360" Background="{x:Null}" x:Name="spPlayer1Final" IsHitTestVisible="True">
+                    <Border Height="Auto" MinWidth="50" MinHeight="50" x:Name="P1FMark20" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1FMark19" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1FMark18" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1FMark17" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1FMark16" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1FMark15" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1FMarkC" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                </StackPanel>
+                <StackPanel MinWidth="50" Width="50" Height="360" Background="{x:Null}" x:Name="spCricketLabels" IsHitTestVisible="False">
+                    <TextBox Text="20" TextWrapping="NoWrap" MinWidth="50" MinHeight="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" FontWeight="Normal" x:Name="lbl20" IsTabStop="False" IsHitTestVisible="True" Focusable="False" VerticalScrollBarVisibility="Disabled" MaxLines="1" IsUndoEnabled="False" IsReadOnly="True"/>
+                    <TextBox Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" FontWeight="Normal" Foreground="#FFFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="50" MinWidth="50" Text="19" TextWrapping="NoWrap" Width="50" Height="50" x:Name="lbl19" IsTabStop="False" IsHitTestVisible="True" Focusable="False" VerticalScrollBarVisibility="Disabled" MaxLines="1" IsUndoEnabled="False" IsReadOnly="True"/>
+                    <TextBox Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" FontWeight="Normal" Foreground="#FFFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="50" MinWidth="50" Text="18" TextWrapping="NoWrap" Width="50" Height="50" x:Name="lbl18" IsTabStop="False" IsHitTestVisible="True" Focusable="False" VerticalScrollBarVisibility="Disabled" MaxLines="1" IsUndoEnabled="False" IsReadOnly="True"/>
+                    <TextBox Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" FontWeight="Normal" Foreground="#FFFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="50" MinWidth="50" Text="17" TextWrapping="NoWrap" Width="50" Height="50" x:Name="lbl17" IsTabStop="False" IsHitTestVisible="True" Focusable="False" VerticalScrollBarVisibility="Disabled" MaxLines="1" IsUndoEnabled="False" IsReadOnly="True"/>
+                    <TextBox Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" FontWeight="Normal" Foreground="#FFFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="50" MinWidth="50" Text="16" TextWrapping="NoWrap" Width="50" Height="50" x:Name="lbl16" IsTabStop="False" IsHitTestVisible="True" Focusable="False" VerticalScrollBarVisibility="Disabled" MaxLines="1" IsUndoEnabled="False" IsReadOnly="True"/>
+                    <TextBox Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" FontWeight="Normal" Foreground="#FFFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="50" MinWidth="50" Text="15" TextWrapping="NoWrap" Width="50" Height="50" x:Name="lbl15" IsTabStop="False" IsHitTestVisible="True" Focusable="False" VerticalScrollBarVisibility="Disabled" MaxLines="1" IsUndoEnabled="False" IsReadOnly="True"/>
+                    <TextBox Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" FontWeight="Normal" Foreground="#FFFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="50" MinWidth="50" Text="C" TextWrapping="NoWrap" Width="50" Height="50" x:Name="lblC" IsTabStop="False" IsHitTestVisible="True" Focusable="False" VerticalScrollBarVisibility="Disabled" MaxLines="1" IsUndoEnabled="False" IsReadOnly="True"/>
+                </StackPanel>
+                <StackPanel MinWidth="50" Width="50" Height="360" Background="{x:Null}" x:Name="spPlayer2Final" IsHitTestVisible="True">
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2FMark20" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2FMark19" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2FMark18" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2FMark17" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2FMark16" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2FMark15" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2FMark1C" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel MinWidth="150" Orientation="Horizontal" Width="150" Height="360" Background="{x:Null}" x:Name="spTempMarks" IsHitTestVisible="True">
+                <StackPanel MinWidth="50" Width="50" Height="360" Background="{x:Null}" x:Name="spPlayer1Temp" IsHitTestVisible="True">
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1TMark20" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1TMark19" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1TMark18" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1TMark17" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1TMark16" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1TMark15" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P1TMarkC" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                </StackPanel>
+                <StackPanel MinWidth="50" Width="50" Height="360" Background="{x:Null}" x:Name="spFiller" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                <StackPanel MinWidth="50" Width="50" Height="360" x:Name="spPlayer2Temp" IsHitTestVisible="True" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2TMark20" ScrollViewer.VerticalScrollBarVisibility="Disabled" IsHitTestVisible="True"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2TMark19" ScrollViewer.VerticalScrollBarVisibility="Disabled" IsHitTestVisible="True"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2TMark18" ScrollViewer.VerticalScrollBarVisibility="Disabled" IsHitTestVisible="True"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2TMark17" ScrollViewer.VerticalScrollBarVisibility="Disabled" IsHitTestVisible="True"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2TMark16" ScrollViewer.VerticalScrollBarVisibility="Disabled" IsHitTestVisible="True"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2TMark15" ScrollViewer.VerticalScrollBarVisibility="Disabled" IsHitTestVisible="True"/>
+                    <Border MinHeight="50" MinWidth="50" Height="50" Width="50" x:Name="P2TMarkC" ScrollViewer.VerticalScrollBarVisibility="Disabled" IsHitTestVisible="True"/>
+                </StackPanel>
+            </StackPanel>
+            <Button Canvas.Left="14" Canvas.Top="372" Height="28" Name="btnAcceptScore" Width="126" FontSize="20" FontFamily="Tall Paul" IsEnabled="False" Click="BtnAcceptScore_Click">Accept Score</Button>
+        </Canvas>
+    </DockPanel>
+</UserControl>

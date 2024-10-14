@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_CS_DartScore", "WPF_CS_DartScore.csproj", "{BA3B4139-F64B-4556-B055-0D5938600442}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA3B4139-F64B-4556-B055-0D5938600442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3B4139-F64B-4556-B055-0D5938600442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3B4139-F64B-4556-B055-0D5938600442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA3B4139-F64B-4556-B055-0D5938600442}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56A8FAE0-4B19-4E30-A4D3-F6C5A37E5BEC}
+	EndGlobalSection
+EndGlobal
