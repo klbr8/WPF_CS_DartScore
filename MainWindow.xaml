@@ -5,16 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDartScoringApp"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="WPF Dart Scoring" Height="598" Width="842" Loaded="OnLoaded" Closing="Window_Closing">
-    <StackPanel Height="545">
+        Title="WPF Dart Scoring" Height="560" Width="842" Loaded="OnLoaded" Closing="Window_Closing">
+    <StackPanel>
         <Menu Background="White">
-            <MenuItem Header="File">
-                <MenuItem Header="_Setup Match..." Click="MenuItem_MatchSetup_Click" IsEnabled="False" />
-                <MenuItem Header="_Practice Game..." Click="MenuItem_Practice_Click"/>
-                <MenuItem Header="_Reports..." Click="MenuItem_Reports_Click" IsEnabled="False" />
+            <MenuItem Header="_File">
                 <MenuItem Header="E_xit" Click="MenuItem_Exit_Click"/>
             </MenuItem>
-            <MenuItem Header="Help" ToolTip="F1" IsEnabled="False" />
+            <MenuItem Header="_Match">
+                <MenuItem Header="_Practice Game..." Click="MenuItem_Practice_Click"/>
+                <MenuItem Header="Quick 301" Click="Quick301_Click" />
+                <MenuItem Header="Quick Cricket" Click="QuickCricket_Click" />
+                <MenuItem Header="_Setup Match..." Click="MenuItem_MatchSetup_Click" IsEnabled="False" />
+            </MenuItem>
+            <MenuItem Header="_Reports">
+                <MenuItem Header="_Reports..." Click="MenuItem_Reports_Click" IsEnabled="False" />
+            </MenuItem>
+            <MenuItem Header="_Help" ToolTip="F1" IsEnabled="False">
+                <MenuItem Header="Help..." IsEnabled="False" />
+                <MenuItem Header="About..." IsEnabled="False" />
+            </MenuItem>
         </Menu>
         <StackPanel Name="spMain" Orientation="Horizontal" Height="474">
             <local:ScoreBoard x:Name="sb" AcceptClick="OnAcceptClick"></local:ScoreBoard>

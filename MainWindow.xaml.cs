@@ -30,6 +30,11 @@ namespace WPFDartScoringApp
 
         }
 
+        /// <summary>
+        /// Opens a dialog to set up a game then sets up the scoreboard and starts the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Practice_Click(object sender, RoutedEventArgs e)
         {
             PracticeSetupDialog dialog = new();
@@ -40,7 +45,7 @@ namespace WPFDartScoringApp
                 foreach (string name in dialog.PlayerNames)
                 {
                     playernames[index++] = name;
-                } 
+                }
                 sb.GameType = dialog.GameType;
                 sb.CurrentTeam = 0;
                 sb.ResetScore();
@@ -49,6 +54,32 @@ namespace WPFDartScoringApp
                 db.CanScore = true;
                 sb.txtCurrShooter.Text = playernames[sb.CurrentTeam];
             }
+        }
+
+        private void Quick301_Click(object sender, RoutedEventArgs e)
+        {
+            sb.GameType = GameSettings.GameType.Three01;
+            db.CanScore = true;
+            sb.CurrentTeam = 0;
+            sb.ResetScore();
+            sb.DoubleOn = true;
+            playernames[0] = "Player One";
+            playernames[1] = "Player Two";
+            sb.txtCurrShooter.Text = playernames[sb.CurrentTeam];
+            db.ResetBoard();
+        }
+
+        private void QuickCricket_Click(object sender, RoutedEventArgs e)
+        {
+            sb.GameType = GameSettings.GameType.Cricket;
+            db.CanScore = true;
+            sb.CurrentTeam = 0;
+            sb.ResetScore();
+            sb.DoubleOn = false;
+            playernames[0] = "Player One";
+            playernames[1] = "Player Two";
+            sb.txtCurrShooter.Text = playernames[sb.CurrentTeam];
+            db.ResetBoard();
         }
 
         private void MenuItem_Reports_Click(object sender, RoutedEventArgs e)
@@ -61,6 +92,11 @@ namespace WPFDartScoringApp
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the dartboards DartsChanged event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnDartsChanged(object sender, EventArgs e)
         {
             sb.Update(db.CurrentRound);
@@ -89,7 +125,7 @@ namespace WPFDartScoringApp
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            // code below was for testing without using the practice setup dialog
+            // code below is for testing without using the practice setup dialog
 
             //sb.GameType = GameSettings.GameType.Cricket;
             //db.CanScore = true;
@@ -101,13 +137,20 @@ namespace WPFDartScoringApp
             //sb.CurrentShooter = playernames[sb.CurrentTeam];
         }
 
+        /// <summary>
+        /// Gives the user an option to close or continue if there is a game in progress and the user tries to exit the program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            // TODO - set this up to only fire if a match is incomplete
-            MessageBoxResult result = MessageBox.Show("Are you sure?", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel, MessageBoxOptions.None);
-            if (result == MessageBoxResult.Cancel)
+            if (db.CanScore) // if CanScore is true then there is a game in progress
             {
-                e.Cancel = true;
+                MessageBoxResult result = MessageBox.Show("Are you sure?", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel, MessageBoxOptions.None);
+                if (result == MessageBoxResult.Cancel)
+                {
+                    e.Cancel = true;
+                } 
             }
         }
     }

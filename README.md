@@ -45,7 +45,7 @@ Please adhere to this project's `code of conduct`.
 
 ## Feedback
 
-If you have any feedback, please reach out to us at fake@fake.com
+If you have any feedback, please reach out to us at klbr8darts@gmail.com
 
 
 ## Documentation

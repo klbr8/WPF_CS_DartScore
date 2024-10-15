@@ -20,6 +20,9 @@ namespace WPFDartScoringApp
     /// </summary>
     public partial class ScoreBoard : UserControl
     {
+        /// <summary>
+        /// This event fires when the Accept Score button is clicked.
+        /// </summary>
         public event EventHandler? AcceptClick;
 
         private int[] totalScores = new int[2]; // tracks each teams total score
@@ -74,22 +77,27 @@ namespace WPFDartScoringApp
                 case GameSettings.GameType.Three01:
                     totalScores[0] = 301;
                     totalScores[1] = 301;
+                    GameName.Text = "301";
                     break;
                 case GameSettings.GameType.Five01:
                     totalScores[0] = 501;
                     totalScores[1] = 501;
+                    GameName.Text = "501";
                     break;
                 case GameSettings.GameType.Six01:
                     totalScores[0] = 601;
                     totalScores[1] = 601;
+                    GameName.Text = "601";
                     break;
                 case GameSettings.GameType.Eight01:
                     totalScores[0] = 801;
                     totalScores[1] = 801;
+                    GameName.Text = "801";
                     break;
                 case GameSettings.GameType.Cricket:
                     totalScores[0] = 0;
                     totalScores[1] = 0;
+                    GameName.Text = "Cricket";
                     for (int x = 0; x < 2; x++)
                     {
                         for (int y = 0; y < 7; y++)
@@ -120,7 +128,7 @@ namespace WPFDartScoringApp
                 ttb.Text = totalScores[i].ToString();
                 rtb.Style = (Style)FindResource("OldScoreStyle");
                 ttb.Style = (Style)FindResource("HiliteScoreStyle");
-
+                
                 switch (i) // put rtb and ttb on the correct teams side.
                 {
                     case 0:
