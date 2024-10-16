@@ -22,7 +22,11 @@ Long term plans are to incorporate dart league management, player stat histories
 
 - Show player stats (average marks per round, average point per dart) on scoreboard
 - Overlay some exciting graphics when a player shoots particularly well
+- Add a computer player that you can play against
+- Mobile version
 - More to come...
+
+
 ## Tech Stack
 
 C#, WPF, .NET
@@ -38,9 +42,9 @@ I am a hobbyist developer and this project currently has an amount of reasonably
 
 Seasoned developers are desired as well to give insight on the projects codebase and direction (and to express how impressed they are with me, everyone can use a pep talk once in a while).
 
-See `contributing.md` for ways to get started.
+See [contributing.md](https://github.com/klbr8/WPF_CS_DartScore/blob/main/CONTRIBUTING.md) for ways to get started.
 
-Please adhere to this project's `code of conduct`.
+Please adhere to this project's [code of conduct](https://github.com/klbr8/WPF_CS_DartScore/blob/main/CODE_OF_CONDUCT.md).
 
 
 ## Feedback
@@ -50,8 +54,8 @@ If you have any feedback, please reach out to us at klbr8darts@gmail.com
 
 ## Documentation
 
-[Documentation](https://linktodocumentation)
-Will be placing some documentation in wiki soon.
+[Documentation](https://github.com/klbr8/WPF_CS_DartScore/wiki)
+
 
 ## License
 
