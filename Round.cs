@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WPFDartScoringApp
+﻿namespace WPFDartScoringApp
 {
     /// <summary>
     /// Holds a list of up to 3 darts. The Round class does not limit itself to holding only 3 darts. The calling code should be checking.
@@ -49,7 +43,7 @@ namespace WPFDartScoringApp
         /// <param name="dart"></param>
         public void EditDart(int which, Dart dart)
         {
-            Darts[which - 1] = dart;
+            Darts[which] = dart;
         }
 
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WPFDartScoringApp
+﻿namespace WPFDartScoringApp
 {
     /// <summary>
     /// A simple class describing one dart in a dartboard
@@ -14,17 +8,17 @@ namespace WPFDartScoringApp
         /// <summary>
         /// The point value of the score eligible dart, unmodified by double or triple
         /// </summary>
-        public int Points { get; set; }
+        public int Points { get; set; } = 0;
 
         /// <summary>
         /// The cricket score value from the ScoreValue enumeration
         /// </summary>
-        public ScoreValue Value { get; set; }
+        public ScoreValue Value { get; set; } = ScoreValue.NotCricket;
 
         /// <summary>
         /// Describes if the dart landed in a score modifier from the enumeration
         /// </summary>
-        public Modifier Quality { get; set; }
+        public Modifier Quality { get; set; } = Modifier.Single;
 
         /// <summary>
         /// Enumeration of dart score quality (multiplier)

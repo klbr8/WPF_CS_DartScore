@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WPFDartScoringApp
 {
@@ -38,22 +27,22 @@ namespace WPFDartScoringApp
         /// Set to true if a player must double on to begin counting points in an 01 type game.
         /// </summary>
         public bool DoubleOn { get; set; }
-        
+
         /// <summary>
         /// Which teams player is shooting the current round.
         /// </summary>
         public int CurrentTeam { get; set; }
-        
+
         /// <summary>
         /// Is set to true when the Scoreboard should consider the current round complete and finalize the rounds scoring.
         /// </summary>
         public bool Accepted { get; set; }
-        
+
         /// <summary>
         /// Tells the scoreboard what games rules are used to score.
         /// </summary>
         public GameSettings.GameType GameType { get; set; }
-        
+
         /// <summary>
         /// Is set to true when the game has been won.
         /// </summary>
@@ -111,7 +100,7 @@ namespace WPFDartScoringApp
                     break;
             }
             // Next 6 lines clear the scoreboard of previous game score and marks
-            lbRoundScores1.Items.Clear(); 
+            lbRoundScores1.Items.Clear();
             lbRoundScores2.Items.Clear();
             lbTotalScore1.Items.Clear();
             lbTotalScore2.Items.Clear();
@@ -128,7 +117,7 @@ namespace WPFDartScoringApp
                 ttb.Text = totalScores[i].ToString();
                 rtb.Style = (Style)FindResource("OldScoreStyle");
                 ttb.Style = (Style)FindResource("HiliteScoreStyle");
-                
+
                 switch (i) // put rtb and ttb on the correct teams side.
                 {
                     case 0:
@@ -160,7 +149,9 @@ namespace WPFDartScoringApp
         /// <param name="round"></param>
         public void Update(Round round)
         {
-            int roundscore = 0;
+            int roundScore = 0;
+            isBustDart = false;
+
             if (GameType != GameSettings.GameType.Cricket)
             // score 01 type game
             {
@@ -169,40 +160,40 @@ namespace WPFDartScoringApp
                 {
                     GameWon = false;
                 }
+
                 foreach (var dart in round.Darts)
                 {
-                    roundscore += ((int)dart.Quality) * dart.Points;
-                    if (totalScores[CurrentTeam] - roundscore == 0)
+                    roundScore += ((int)dart.Quality) * dart.Points;
+                    if (totalScores[CurrentTeam] - roundScore == 0) // if this dart makes the score 0
                     {
-                        if (dart.Quality == Dart.Modifier.Double)
+                        if (dart.Quality == Dart.Modifier.Double) //and it's a double then game is won.
                         {
                             GameWon = true;
                         }
-                    }
-                    if (totalScores[CurrentTeam] - roundscore < 1)
-                    {
-                        if (!(dart.Quality == Dart.Modifier.Double))
+                        else // if it's not a double then bust and no score change.
                         {
                             isBustDart = true;
+                            roundScore = 0;
                         }
                     }
-                    if (totalScores[CurrentTeam] == 1)
+                    else if (totalScores[CurrentTeam] - roundScore < 2) // if this dart brought the score down below 2 then the round is a bust. round over.
                     {
                         isBustDart = true;
+                        roundScore = 0;
                     }
-                    if (DoubleOn && !isRoundDoubledOn)
+                    else if (DoubleOn && !isRoundDoubledOn) // the score is still 2 or higher, so, if the game requires 'double on' and that requirement hasn't been met
                     {
-                        if (dart.Quality == Dart.Modifier.Double)
+                        if (dart.Quality == Dart.Modifier.Double) // if this dart meets the double on requirement
                         {
-                            isRoundDoubledOn = true;
+                            isRoundDoubledOn = true; // set this so we start counting all darts in the score
                         }
                         else
                         {
-                            roundscore = 0;
+                            roundScore = 0; // this dart didn't score
                         }
                     }
                 }
-                DrawScore(Accepted, roundscore);
+                DrawScore(Accepted, roundScore);
                 if (Accepted)
                 {
                     if (isRoundDoubledOn)
@@ -231,7 +222,7 @@ namespace WPFDartScoringApp
                         if ((rm[i] + marks[CurrentTeam, i]) > 3 && marks[OppTeam, i] < 3)
                         {
                             int extramarks = rm[i] + marks[CurrentTeam, i] - 3;
-                            roundscore += extramarks * CricketValue(i);
+                            roundScore += extramarks * CricketValue(i);
                         }
 
                         if (marks[CurrentTeam, i] < 3)
@@ -245,7 +236,7 @@ namespace WPFDartScoringApp
                     }
                 }
                 CheckCricketWin();
-                DrawScore(Accepted, roundscore);
+                DrawScore(Accepted, roundScore);
                 for (int x = 0; x < 2; x++)
                 {
                     for (int y = 0; y < 7; y++)
@@ -463,7 +454,7 @@ namespace WPFDartScoringApp
                 }
             }
         }
-        
+
         /// <summary>
         /// Clears the stackpanel of marks.
         /// </summary>
@@ -510,5 +501,5 @@ namespace WPFDartScoringApp
             }
             GameWon = canWin;
         }
-    } 
+    }
 }

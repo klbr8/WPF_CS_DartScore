@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WPFDartScoringApp
@@ -89,20 +80,20 @@ namespace WPFDartScoringApp
             {
                 if (CurrentRound.Darts.Count < 3 || editing)
                 {
-                    Path path = (Path)e.OriginalSource;
+                    Path path = (Path)e.OriginalSource; // reference the part of the dartboard that was clicked
                     Dart dart = new()
                     {
-                        Quality = Modify(path.Name[..1]),
-                        Points = int.Parse(path.Name[1..])
+                        Quality = Modify(path.Name[..1]), // from that reference set Quality property to single, double or triple
+                        Points = int.Parse(path.Name[1..]) // and how many points for a single
                     };
-                    dart.Value = GetDartValue(dart.Points);
-                    if (editing)
+                    dart.Value = GetDartValue(dart.Points); // then set Value for cricket games (same but different)
+                    if (editing) // if a marker was removed and is being placed again, edit the correct dart in the round i.e. first, second or third
                     {
-                        CurrentRound.InsertDart(editCount, dart);
+                        CurrentRound.EditDart(editCount - 1, dart);
                         ShowMarker(editCount, e);
                         editing = false;
                     }
-                    else
+                    else // this is a new dart to be added to the end of the rounds list of darts
                     {
                         CurrentRound.AddDart(dart);
                         ShowMarker(CurrentRound.Darts.Count, e);
@@ -140,13 +131,13 @@ namespace WPFDartScoringApp
         /// <param name="e"></param>
         private void Dotclick(object sender, MouseButtonEventArgs e)
         {
-            if (!editing)
+            if (!editing) //avoids removing more than one marker at a time.
             {
                 FrameworkElement frameworkElement = (FrameworkElement)e.Source;
                 frameworkElement.Visibility = Visibility.Hidden;
                 editing = true;
                 editCount = (int)frameworkElement.Tag;
-                CurrentRound.RemoveDart(editCount - 1);
+                CurrentRound.EditDart(editCount - 1, new Dart());
                 if (!CanScore)
                 {
                     CanScore = true;
